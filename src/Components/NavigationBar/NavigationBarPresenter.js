@@ -1,23 +1,21 @@
 import React from "react";
 import NavigationBarView from "./NavigationBarView"
 
-export default function NavigationBarPresenter() {
-  const [currentlySelected, setCurrentlySelected] = useState([])
+export default function NavigationBarPresenter(props) {
 
-  function onProfileClickACB(){
-    //navigate to profile
-    
+  function onProfileClickACB() {
+    props.navigation.navigate('ProfileScreen')
   }
-  function onSwipeClickACB(){
-    //navigate to swipe
+  function onSwipeClickACB() {
+    props.navigation.navigate('SwipeScreen')
   }
-  function onMatchesClickACB(){
-    //navigate to matches
+  function onMessageClickACB() {
+    props.navigation.navigate('MessageScreen')
   }
-  return (<NavigationBarView 
+  return (<NavigationBarView
     onProfileClick={onProfileClickACB}
     onSwipeClick={onSwipeClickACB}
-    onMatchesClick={onMatchesClickACB}
-    />)
+    onMessageClick={onMessageClickACB}
+  />)
 
 }
