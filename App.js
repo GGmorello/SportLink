@@ -6,8 +6,10 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SwipeScreenPresenter from './src/Components/Screens/SwipeScreen/SwipeScreenPresenter';
 import ProfileScreenPresenter from './src/Components/Screens/ProfileScreen/ProfileScreenPresenter';
 import MessageScreenPresenter from './src/Components/Screens/MessageScreen/MessageScreenPresenter';
+
+const Stack = createNativeStackNavigator();
+
 export default function App() {
-  const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
         <Stack.Navigator>
