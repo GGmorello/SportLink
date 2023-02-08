@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Button } from "react-native"
-
+import { View, Button, StyleSheet } from "react-native"
+import style from "./NavigationBarStyle"
 
 export default function NavigationBarView(props) {
     function onProfileClick() {
@@ -12,10 +12,11 @@ export default function NavigationBarView(props) {
     function onMessageClick() {
         props.onMessageClick()
     }
+
     return (
-        <View>
-            <Button title="Profile" onPress={() => onProfileClick()}></Button>
-            <Button title="Swipe" onPress={() => onSwipeClick()}></Button>
-            <Button title="Message" onPress={() => onMessageClick()}></Button>
+        <View style={style.container}>
+            <Button style={style.button} title="Profile" onPress={() => onProfileClick()}></Button>
+            <Button style={style.button} title="Swipe" onPress={() => onSwipeClick()}></Button>
+            <Button style={style.button} title="Message" onPress={() => onMessageClick()}></Button>
         </View>)
 }
