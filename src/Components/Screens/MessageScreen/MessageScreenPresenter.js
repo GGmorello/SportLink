@@ -1,5 +1,6 @@
 import React from "react";
+import MessageScreenView from "./MessageScreenView";
 
 export default function MessageScreenPresenter() { 
-  return (<div/>)
+  return (<MessageScreenView/>)
 }
