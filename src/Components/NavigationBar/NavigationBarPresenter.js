@@ -1,24 +1,23 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import React from "react";
+import NavigationBarView from "./NavigationBarView"
 
-const Stack = createNativeStackNavigator();
+export default function NavigationBarPresenter() {
+  const [currentlySelected, setCurrentlySelected] = useState([])
 
-const MyStack = () => {
-    return (
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Swiping"
-            component={HomeScreen}
-            options={{title: 'Welcome'}}
-          />
-          <Stack.Screen 
-            name="Profile" 
-            component={ProfileScreen} 
-          />
-          <Stack.Screen
-            name=""
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    );
-  };
+  function onProfileClickACB(){
+    //navigate to profile
+    
+  }
+  function onSwipeClickACB(){
+    //navigate to swipe
+  }
+  function onMatchesClickACB(){
+    //navigate to matches
+  }
+  return (<NavigationBarView 
+    onProfileClick={onProfileClickACB}
+    onSwipeClick={onSwipeClickACB}
+    onMatchesClick={onMatchesClickACB}
+    />)
+
+}
