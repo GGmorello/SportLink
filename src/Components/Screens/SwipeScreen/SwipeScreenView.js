@@ -5,5 +5,7 @@ export default function SwipeScreenView(props) {
     return (
         <View>
             <Text>SwipeScreen</Text>
+
+            <Text></Text>
         </View>)
 }

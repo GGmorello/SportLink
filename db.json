@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Erik",
+        "age": 28,
+        "images": [],
+        "interests": ["Padel"],
+        "biography": "Im an extrovert who enjoys doing sports with other people. I wish to find a running partner so we can motivate each other, and a padel partner to team with for an upcoming tournament (medium level). My achievements are: together with my partner, we placed second in a local padel tournament here in Stockholm. In regards to running, I have ran multiple marathon, and my personal best time is 3 hours and 37 minutes."
+    },
+    {
+        "name": "Mick",
+        "age": 28,
+        "images": [],
+        "interests": ["Padel, Jogging"],
+        "biography": "Im an extrovert who enjoys doing sports with other people. I wish to find a running partner so we can motivate each other, and a padel partner to team with for an upcoming tournament (medium level). My achievements are: together with my partner, we placed second in a local padel tournament here in Stockholm. In regards to running, I have ran multiple marathon, and my personal best time is 3 hours and 37 minutes."
+    }
+]
