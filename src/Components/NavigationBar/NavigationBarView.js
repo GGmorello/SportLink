@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Button, StyleSheet } from "react-native"
+import { View, TouchableHighlight} from "react-native"
 import style from "./NavigationBarStyle"
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export default function NavigationBarView(props) {
     function onProfileClick() {
@@ -15,8 +16,8 @@ export default function NavigationBarView(props) {
 
     return (
         <View style={style.container}>
-            <Button style={style.button} title="Profile" onPress={() => onProfileClick()}></Button>
-            <Button style={style.button} title="Swipe" onPress={() => onSwipeClick()}></Button>
-            <Button style={style.button} title="Message" onPress={() => onMessageClick()}></Button>
+            <FontAwesome size={50} color="white" name="user" onPress={() => onProfileClick()}></FontAwesome>
+            <FontAwesome size={50} color="white" name="home" onPress={() => onSwipeClick()}></FontAwesome>
+            <FontAwesome size={50}  color="white" name="comment" onPress={() => onMessageClick()}></FontAwesome>      
         </View>)
 }
