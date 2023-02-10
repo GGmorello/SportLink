@@ -1,7 +1,8 @@
 import React from "react";
-import { View, TouchableHighlight} from "react-native"
+import {View} from "react-native"
 import style from "./NavigationBarStyle"
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+
 
 export default function NavigationBarView(props) {
     function onProfileClick() {

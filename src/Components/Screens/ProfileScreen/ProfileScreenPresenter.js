@@ -4,9 +4,13 @@ import { View } from "react-native"
 import NavigationBarPresenter from "../../NavigationBar/NavigationBarPresenter"
 
 
-export default function SwipeScreenPresenter({ navigation }) {
+export default function ProfileScreenPresenter(props) {
+  function onProfilePressEdit() {
+    props.navigation.navigate('EditProfileScreen')
+  }
+
   return (<View>
-    <ProfileScreenView />
-    <NavigationBarPresenter navigation={navigation} />
+    <ProfileScreenView navigation={props.navigation} onProfilePress={onProfilePressEdit}/>
+    <NavigationBarPresenter navigation={props.navigation} />
   </View>)
 }
