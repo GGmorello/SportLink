@@ -4,7 +4,7 @@ import ImageView from "./ImageView"
 export default function ImagePresenter(props) {
 
     function showImageACB() {
-      props.navigation.navigate('ShowImage')            //hw do i pass as a parameter the url of the image ?
+      props.navigation.navigate('ShowImage', {img : props.url})            //hw do i pass as a parameter the url of the image ?
     }
     
     return (<ImageView

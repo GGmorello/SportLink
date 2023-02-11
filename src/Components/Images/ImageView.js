@@ -9,10 +9,10 @@ export default function ImageView(props) {
     return (
         <View>
             <TouchableOpacity onPress={() => onPressShowImage()}>
-            <Image
-                style={props.styles}
-                source={props.url}
-            />
+                <Image
+                    style={props.styles}
+                    source={props.url}
+                />
             </TouchableOpacity> 
         </View>)
 }
