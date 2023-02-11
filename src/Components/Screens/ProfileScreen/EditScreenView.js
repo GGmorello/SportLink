@@ -28,11 +28,11 @@ export default function EditScreenView(props) {
                     <Text style={style.subtext}>Stockholm, Sweden</Text>
                 </View>
                 <Text style={style.subtitle}>Biography</Text>
-                <View style={[style.infoContainer, {backgroundColor: '#3f3f3f'}]}>
+                <View style={[style.infoContainer, {backgroundColor: '#b4cbf0'}]}>
                     <TextInput style={[style.subtext, {margin: 6}]} multiline onChangeText={onChangeText} value={text}></TextInput>
                 </View>
                 <Text style={style.subtitle}>About me</Text>
-                <View style={[style.infoContainer2, {backgroundColor: '#3f3f3f'}]}>
+                <View style={[style.infoContainer2, {backgroundColor: '#b4cbf0'}]}>
                     <View style={{flexDirection:'row', justifyContent: 'space-between', marginTop: 5, marginBottom: 5}}> 
                         <View style={{flexDirection:'row'}}>
                             <MaterialIcons name="link" size={20} style={[style.icon, {marginLeft: 5}]}></MaterialIcons>
