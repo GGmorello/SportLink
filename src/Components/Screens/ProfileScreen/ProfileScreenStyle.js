@@ -107,7 +107,48 @@ const style = StyleSheet.create({
         fontSize: 14,
         color: '#000000',
         marginTop: 2
-    }
+    },
+    
+    flexView: {
+        flex: 1,
+        backgroundColor: "white",
+      },
+    modal: {
+        justifyContent: "flex-end",
+        margin: 0,
+    },
+    modalContent: {
+        backgroundColor: "#161616",
+        paddingTop: 12,
+        paddingHorizontal: 12,
+        borderTopRightRadius: 20,
+        borderTopLeftRadius: 20,
+        minHeight: 100,
+        paddingBottom: 20,
+    },
+    center: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    barIcon: {
+        width: 60,
+        height: 5,
+        backgroundColor: "#bbb",
+        borderRadius: 3,
+    },
+    text2: {
+        color: "#bbb",
+        fontSize: 24,
+        marginTop: 100,
+    },
+    btnContainer: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: 500,
+    },
+
   });
 
 
