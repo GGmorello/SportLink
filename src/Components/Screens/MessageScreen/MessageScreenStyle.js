@@ -10,6 +10,18 @@ const styles = StyleSheet.create({
         position: "fixed",
         width: "100%",
         bottom: 0,
+    },
+    verticalScrollView:{
+        marginHorizontal: 5,
+    },
+    horizontalScrollView: {
+        marginVertical: 5,
+    },
+    title: {
+      color: '#000',
+      fontSize: 20,
+      fontWeight: 'bold',
+      textAlign: 'left',
     }
   });
 
