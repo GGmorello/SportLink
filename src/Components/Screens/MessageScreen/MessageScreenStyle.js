@@ -5,10 +5,11 @@ import { StyleSheet } from "react-native"
 const styles = StyleSheet.create({
     screen: {
         position: "relative",
-        height: "100vh",
     },
-    navbar:{
+    navigationBar:{
         position: "fixed",
+        width: "100%",
+        bottom: 0,
     }
   });
 
