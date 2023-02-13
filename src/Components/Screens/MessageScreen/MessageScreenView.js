@@ -16,11 +16,10 @@ export default function MessageScreenView(props) {
 
     return (
         <View>
-            <TouchableOpacity  onPress={() => onChatClick(match.id)}>
-                <ChatPreview
-                name= {match.name} 
-                messagePreview= {match.messagePreview}
-                imageUrl= {match.imageUrl}/>
-            </TouchableOpacity >
+            <ChatPreview
+            onPress={() => onChatClick(match.id)}
+            name= {match.name} 
+            messagePreview= {match.messagePreview}
+            imageUrl= {match.imageUrl}/>
         </View>)
 }

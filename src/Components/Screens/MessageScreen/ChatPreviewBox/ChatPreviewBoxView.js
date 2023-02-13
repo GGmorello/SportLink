@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import styles from "./ChatPreviewBoxStyle"
 
 
-const ChatPreview = ({ name, messagePreview, imageUrl }) => {
+const ChatPreview = ({ name, messagePreview, imageUrl, onPress }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={onPress}>
+    <View   style={styles.container}>
         <View style={styles.imageCircle}>
         <Image style={styles.image} source={{ uri: imageUrl }} />
         
@@ -15,6 +16,7 @@ const ChatPreview = ({ name, messagePreview, imageUrl }) => {
             <Text style={styles.messagePreview}>{messagePreview}</Text>
         </View>
     </View>
+    </TouchableOpacity >
   );
 };
 
