@@ -16,6 +16,8 @@ const styles = StyleSheet.create({
 
 const style = StyleSheet.create({
     container: {
+      position: "fixed",
+      bottom: "0",
       backgroundColor: '#000000',
         //'rgb(180, 203, 240)',     //ive been told that the blue looks ugly, and that we should do black
       border: '1px',
