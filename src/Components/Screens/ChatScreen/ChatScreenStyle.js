@@ -21,7 +21,26 @@ const styles = StyleSheet.create({
         width: "100%",
         bottom: 0,
       },
-    
+      headerContainer:{
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center"
+      },
+      headerItems:{
+        flexDirection: 'row',
+      },
+      image: {
+        width: 50,
+        height: 50,
+        borderRadius: 30,
+      },
+      name: {
+        color: 'black',
+        fontSize: 20,
+        alignSelf: "center",
+        fontWeight: 'bold',
+        textAlign: 'left',
+      },
       btnSend:{
         backgroundColor:"#00BFFF",
         width:40,

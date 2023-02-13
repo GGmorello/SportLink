@@ -1,41 +1,50 @@
 import React from "react";
 import styles from "./ChatScreenStyle";
 import {
-    Dimensions,
-    StyleSheet,
     Text,
     View,
     TouchableOpacity,
     Image,
-    Alert,
-    ScrollView,
     TextInput,
     FlatList,
   } from 'react-native';
 
 export default function ChatScreenView(props) {
+    let match = {
+        id: "1",
+        name: "Test Name",
+        messagePreview: "This is a sample message...",
+        imageUrl: "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
+    }
+
     let messageHistory = props.messageHistory
-  const flatlistRef = props.flatlistRef
+    const flatlistRef = props.flatlistRef
 
 
-  function sendMessage(){
-    props.sendMessage()
-  }
+    function sendMessage(){
+        props.sendMessage()
+    }
 
-  function setMessage(data){
-    props.setMessage(data)
-  }
+    function setMessage(data){
+        props.setMessage(data)
+    }
 
-  function renderDate(date){
-    return(
-      <Text style={styles.time}>
-        {date}
-      </Text>
-    );
-  }
+    function renderDate(date){
+        return(
+        <Text style={styles.time}>
+            {date}
+        </Text>
+        );
+    }
 
-  return (
+    return (
     <View style={styles.container}>
+        <View style={styles.headerContainer}>
+            <View style={styles.headerItems}>
+                <Image style={styles.image} source={{ uri: match.imageUrl }} />
+                <Text style={styles.name}>{match.name}</Text>
+            </View>
+        </View>
         <View style={styles.chatContainer}>
             <FlatList 
             style={styles.list}
