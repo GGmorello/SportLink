@@ -5,7 +5,6 @@ import { StyleSheet } from "react-native"
 const styles = StyleSheet.create({
     container: {
       display: "flex",
-      alignItems: "left",
       justifyContent: "center",
       margin: 5,
     },
@@ -27,7 +26,6 @@ const styles = StyleSheet.create({
       marginLeft: 100,
       top: 0, 
       paddingVertical: 4,
-      alignItems: 'left',
     },
     name: {
       color: '#000',

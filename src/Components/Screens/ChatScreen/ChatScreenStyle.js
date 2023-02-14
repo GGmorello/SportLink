@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
       },
       footer:{
         flexDirection: 'row',
-        position: "fixed",
+        position: "absolute",
         width: "100%",
         bottom: 0,
       },

@@ -4,11 +4,10 @@ import { StyleSheet } from "react-native"
 
 const styles = StyleSheet.create({
     screen: {
-        position: "relative",
+        flex: 1,           
     },
     navigationBar:{
-        position: "fixed",
-        flex: 1,
+        position: "absolute",
         width: "100%",
         bottom: 0,
     },
