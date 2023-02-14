@@ -80,8 +80,8 @@ const style = StyleSheet.create({
     edit: {
         backgroundColor: "#B4CBF0",
         position: "absolute",
+        top: 15,
         right: 20,
-        bottom: 85,
         elevation: 3,
         width: 55,
         height: 55,

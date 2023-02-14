@@ -28,7 +28,7 @@ const style = StyleSheet.create({
       elevation: 0,
       flexDirection: 'row',
       justifyContent: 'space-around',
-      padding: 10,
+      paddingVertical: 10,
       ...styles.shadow
     },
   });
