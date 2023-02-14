@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, TextInput, Slider } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, Slider, ScrollView } from 'react-native';
 import styles from './SettingsScreenStyle';
 
 const SettingsScreenView = ({
+  customSports,
   gender,
   selectedSportsOption,
   customSportsInput,
@@ -12,12 +13,15 @@ const SettingsScreenView = ({
   handleAllSportsPressWithSelection,
   handleCustomSportsPressWithSelection,
   handleCustomSportsInputChange,
-  handleDistanceValueChange,
+  setDistance,
   handleAgeIntervalValueChange,
   handleMenPressWithSelection,
   handleWomenPressWithSelection,
   handleAllPressWithSelection,
+  handleCustomSportsInputSubmit,
+  handleCustomSportPress
 }) => {
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Settings</Text>
@@ -55,8 +59,27 @@ const SettingsScreenView = ({
             <TextInput
               value={customSportsInput}
               onChangeText={handleCustomSportsInputChange}
+              onSubmitEditing={handleCustomSportsInputSubmit}
               style={styles.customSportsInput}
+              placeholder="Create your list of sports"
+              placeholderTextColor="#999"
             />
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+              <View style={styles.customSportsList}>
+                {customSports.map((sport, index) => (
+                  <Text
+                    key={index}
+                    style={[
+                      styles.customSport,
+                      sport.selected && styles.selectedCustomSport,
+                    ]}
+                    onPress={() => handleCustomSportPress(sport)}
+                  >
+                    {sport.name}
+                  </Text>
+                ))}
+              </View>
+            </ScrollView>
           </View>
         )}
       </View>
@@ -64,7 +87,7 @@ const SettingsScreenView = ({
         <Text style={styles.subtitle}>Distance: {distance} km</Text>
         <Slider
           value={distance}
-          onValueChange={handleDistanceValueChange}
+          onValueChange={distance => setDistance(value)}
           minimumValue={0}
           maximumValue={150}
           style={styles.slider}

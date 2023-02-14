@@ -6,14 +6,31 @@ const SettingsScreenPresenter = () => {
   const [distance, setDistance] = useState(0);
   const [ageInterval, setAgeInterval] = useState(0);
   const [gender, setGender] = useState('all');
-  const [selectedSportsOption, setSelectedSportsOption] = useState('');
+  const [selectedSportsOption, setSelectedSportsOption] = useState('');  
+  const [customSports, setCustomSports] = useState([
+    { name: 'Padel', selected: true },
+    { name: 'Football', selected: true },
+    { name: 'Gym', selected: true },
+  ]);
 
-  const handleCustomSportsInputChange = (text) => {
-    setCustomSportsInput(text);
-  };
+  function handleCustomSportsInputChange(value) {
+    setCustomSportsInput(value);
+  }
 
-  const handleDistanceValueChange = (value) => {
-    setDistance(value);
+  function handleCustomSportsInputSubmit() {
+    setCustomSports(
+      customSports.concat({
+        name: customSportsInput,
+        selected: false,
+      })
+    );
+    setCustomSportsInput('');
+  }
+
+  const handleCustomSportPress = (sport) => {
+    setCustomSports(customSports.map((s) =>
+      s.name === sport.name ? { ...s, selected: !s.selected } : s
+    ));
   };
 
   const handleAgeIntervalValueChange = (value) => {
@@ -44,6 +61,8 @@ const SettingsScreenPresenter = () => {
     setGender('all');
   };
 
+
+
   return (
     <SettingsScreenView
       customSportsInput={customSportsInput}
@@ -58,9 +77,11 @@ const SettingsScreenPresenter = () => {
       handleWomenPressWithSelection={handleWomenPressWithSelection}
       handleAllPressWithSelection={handleAllPressWithSelection}
       handleCustomSportsInputChange={handleCustomSportsInputChange}
-      handleDistanceValueChange={handleDistanceValueChange}
+      setDistance={setDistance}
       handleAgeIntervalValueChange={handleAgeIntervalValueChange}
-
+      handleCustomSportsInputSubmit={handleCustomSportsInputSubmit}
+      customSports={customSports}
+      handleCustomSportPress={handleCustomSportPress}
     />
   );
 };

@@ -42,6 +42,25 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 8,
   },
+  customSportsList: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 10,
+  },
+  customSport: {
+    backgroundColor: '#eee',
+    padding: 10,
+    borderRadius: 20,
+    marginRight: 10,
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  
+  selectedCustomSport: {
+    color: 'white',
+    backgroundColor: '#2596be',
+  },
+
   sliderContainer: {
     marginBottom: 16,
   },
