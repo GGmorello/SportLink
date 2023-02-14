@@ -2,6 +2,7 @@ import React from "react";
 import {View, Text, Image, TouchableOpacity} from "react-native";
 import styles from "./SwipeScreenStyle";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { ImageBackground } from "react-native-web";
 
 export default function SwipeScreenView(props) {
 
@@ -26,7 +27,12 @@ export default function SwipeScreenView(props) {
     return (
         <View style={styles.screenLayout}>
             <View style={styles.rowContainer}>
-                <Image source={require('./images/erik1.jpg')} style={styles.image}/>
+                <ImageBackground source={require('./images/erik1.jpg')} style={styles.image}>
+                    <View style={{...styles.rowContainer, marginHorizontal: 5, marginVertical: 5, justifyContent:"space-between", marginTop:"auto"}}>
+                        <FontAwesome name="chevron-circle-left" size={25} color="#FFFFFF"/>
+                        <FontAwesome name="chevron-circle-right" size={25} color="#FFFFFF"/>
+                    </View>
+                </ImageBackground>
                 <View>
                     <Text style={styles.name}>{erik.name}</Text>
                     <Text style={styles.age}>{erik.age}</Text>
@@ -39,7 +45,7 @@ export default function SwipeScreenView(props) {
             <Text>
                 {erik.biography}
             </Text>
-            <View style={styles.rowContainerSpaceBetween}>
+            <View style={{...styles.rowContainer, justifyContent:"space-between", marginHorizontal: 20, marginVertical: 20}}>
                 <TouchableOpacity
                     onPress={null}
                     style={styles.rejectButton}

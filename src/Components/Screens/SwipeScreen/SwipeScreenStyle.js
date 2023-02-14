@@ -28,12 +28,6 @@ const styles = StyleSheet.create({
     rowContainer: {
       flexDirection: 'row',
     },
-    rowContainerSpaceBetween: {
-      flexDirection: 'row',
-      justifyContent: "space-between",
-      marginHorizontal: 20,
-      marginVertical: 20,
-    },
     name: {
       fontSize: 30
     },
