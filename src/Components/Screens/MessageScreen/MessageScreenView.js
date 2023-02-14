@@ -17,8 +17,8 @@ export default function MessageScreenView(props) {
     }
 
     return (
-        <View>
-            <Text style={styles.title}>New Matches</Text>
+        <ScrollView style={styles.verticalScrollView}>
+        <Text style={styles.title}>New Matches</Text>
             <ScrollView style={styles.horizontalScrollView} horizontal={true}>
                 <NewMatchPreview
                 onPress={() => onChatClick(match.id)}
@@ -52,7 +52,6 @@ export default function MessageScreenView(props) {
                 imageUrl= {match.imageUrl}/>
             </ScrollView>
             <Text style={styles.title}>Messages</Text>
-            <ScrollView style={styles.verticalScrollView}>
                 <ChatPreview
                 onPress={() => onChatClick(match.id)}
                 name= {match.name} 
@@ -83,6 +82,6 @@ export default function MessageScreenView(props) {
                 name= {match.name} 
                 messagePreview= {match.messagePreview}
                 imageUrl= {match.imageUrl}/>
-            </ScrollView>
-        </View>)
+            </ScrollView>)
+        
 }

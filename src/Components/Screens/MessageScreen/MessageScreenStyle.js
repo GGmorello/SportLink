@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     },
     verticalScrollView:{
         marginHorizontal: 5,
+        marginBottom:75,
     },
     horizontalScrollView: {
         marginVertical: 5,
