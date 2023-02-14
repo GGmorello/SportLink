@@ -2,12 +2,15 @@ import React from "react";
 import SwipeScreenView from "./SwipeScreenView";
 import { View } from "react-native"
 import NavigationBarPresenter from "../../NavigationBar/NavigationBarPresenter"
+import styles from "./SwipeScreenStyle"
 
 
 export default function SwipeScreenPresenter({ navigation }) {
   return (
-    <View>
+    <View style={styles.screen}>
       <SwipeScreenView />
-      <NavigationBarPresenter navigation={navigation} />
+      <View style={styles.navigationBar}>
+        <NavigationBarPresenter navigation={navigation} />
+      </View>
     </View>)
 }
