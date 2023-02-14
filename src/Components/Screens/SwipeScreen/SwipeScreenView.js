@@ -40,6 +40,12 @@ export default function SwipeScreenView(props) {
                 </View>
             </View>
             <Text style={styles.sectionTitle}>
+                Interests
+            </Text>
+            <View style={{...styles.rowContainer, borderColor: "#DEDEDE", borderBottomWidth: 1}}>
+
+            </View>
+            <Text style={styles.sectionTitle}>
                 Biography
             </Text>
             <Text>

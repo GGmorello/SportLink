@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     sectionTitle: {
       color: "#3f3f3f",
       marginBottom: 10,
+      marginTop: 10,
     },
     containerIcon: {
       flexDirection: 'row', 
