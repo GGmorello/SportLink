@@ -7,7 +7,6 @@ import style from "./ProfileScreenStyle"
 
 export default function ProfileScreenPresenter(props) {
   function onProfilePressEdit() {
-    console.log("hello");
     props.navigation.navigate('EditProfileScreen')
   }
 
