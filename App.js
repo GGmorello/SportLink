@@ -6,7 +6,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SwipeScreenPresenter from './src/Components/Screens/SwipeScreen/SwipeScreenPresenter';
 import ProfileScreenPresenter from './src/Components/Screens/ProfileScreen/ProfileScreenPresenter';
 import MessageScreenPresenter from './src/Components/Screens/MessageScreen/MessageScreenPresenter';
+import ShowImageScreenPresenter from './src/Components/Screens/ShowImageScreen/ShowImageScreenPresenter';
+import EditScreenPresenter from './src/Components/Screens/ProfileScreen/EditScreenPresenter';
 import ChatScreenPresenter from './src/Components/Screens/ChatScreen/ChatScreenPresenter';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -22,12 +25,20 @@ export default function App() {
           component={ProfileScreenPresenter}
         />
         <Stack.Screen
+          name="ChatScreen"
+          component={ChatScreenPresenter}
+        />
+        <Stack.Screen
           name="MessageScreen"
           component={MessageScreenPresenter}
         />
         <Stack.Screen
-          name="ChatScreen"
-          component={ChatScreenPresenter}
+          name="ShowImage"
+          component={ShowImageScreenPresenter}
+        />
+        <Stack.Screen
+          name="EditProfileScreen"
+          component={EditScreenPresenter}
         />
       </Stack.Navigator>
     </NavigationContainer>
