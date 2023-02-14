@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     },
     navigationBar:{
         position: "fixed",
+        flex: 1,
         width: "100%",
         bottom: 0,
     },

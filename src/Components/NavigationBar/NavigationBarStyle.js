@@ -16,22 +16,14 @@ const styles = StyleSheet.create({
 
 const style = StyleSheet.create({
     container: {
-      position: "fixed",
-      bottom: "0",
       backgroundColor: '#000000',
         //'rgb(180, 203, 240)',     //ive been told that the blue looks ugly, and that we should do black
       border: '1px',
-      position: 'absolute',     //??
-      borderRadius: 15,
       height: 75,
-      top: 200,     //have to change i know ehe
-      bottom: 25,
-      left: 10,
-      right:  10,
       elevation: 0,
       flexDirection: 'row',
       justifyContent: 'space-around',
-      padding: 10,
+      paddingVertical: 10,
       ...styles.shadow
     },
   });
