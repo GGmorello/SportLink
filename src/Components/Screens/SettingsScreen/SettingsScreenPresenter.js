@@ -2,31 +2,11 @@ import React, { useState } from 'react';
 import SettingsScreenView from './SettingsScreenView';
 
 const SettingsScreenPresenter = () => {
-  const [matchingSports, setMatchingSports] = useState(true);
-  const [allSports, setAllSports] = useState(false);
-  const [customSports, setCustomSports] = useState(false);
   const [customSportsInput, setCustomSportsInput] = useState('');
   const [distance, setDistance] = useState(0);
   const [ageInterval, setAgeInterval] = useState(0);
   const [gender, setGender] = useState('all');
-
-  const handleMatchingSportsPress = () => {
-    setMatchingSports(true);
-    setAllSports(false);
-    setCustomSports(false);
-  };
-
-  const handleAllSportsPress = () => {
-    setMatchingSports(false);
-    setAllSports(true);
-    setCustomSports(false);
-  };
-
-  const handleCustomSportsPress = () => {
-    setMatchingSports(false);
-    setAllSports(false);
-    setCustomSports(true);
-  };
+  const [selectedSportsOption, setSelectedSportsOption] = useState('');
 
   const handleCustomSportsInputChange = (text) => {
     setCustomSportsInput(text);
@@ -40,36 +20,47 @@ const SettingsScreenPresenter = () => {
     setAgeInterval(value);
   };
 
-  const handleMenPress = () => {
+  const handleMatchingSportsPressWithSelection = () => {
+    setSelectedSportsOption('matching');
+  };
+
+  const handleAllSportsPressWithSelection = () => {
+    setSelectedSportsOption('all');
+  };
+
+  const handleCustomSportsPressWithSelection = () => {
+    setSelectedSportsOption('custom');
+  };
+
+  const handleMenPressWithSelection = () => {
     setGender('men');
   };
 
-  const handleWomenPress = () => {
+  const handleWomenPressWithSelection = () => {
     setGender('women');
   };
 
-  const handleAllPress = () => {
+  const handleAllPressWithSelection = () => {
     setGender('all');
   };
 
   return (
     <SettingsScreenView
-      matchingSports={matchingSports}
-      allSports={allSports}
-      customSports={customSports}
       customSportsInput={customSportsInput}
       distance={distance}
       ageInterval={ageInterval}
       gender={gender}
-      handleMatchingSportsPress={handleMatchingSportsPress}
-      handleAllSportsPress={handleAllSportsPress}
-      handleCustomSportsPress={handleCustomSportsPress}
+      selectedSportsOption={selectedSportsOption}
+      handleMatchingSportsPressWithSelection={handleMatchingSportsPressWithSelection}
+      handleAllSportsPressWithSelection={handleAllSportsPressWithSelection}
+      handleCustomSportsPressWithSelection={handleCustomSportsPressWithSelection}
+      handleMenPressWithSelection={handleMenPressWithSelection}
+      handleWomenPressWithSelection={handleWomenPressWithSelection}
+      handleAllPressWithSelection={handleAllPressWithSelection}
       handleCustomSportsInputChange={handleCustomSportsInputChange}
       handleDistanceValueChange={handleDistanceValueChange}
       handleAgeIntervalValueChange={handleAgeIntervalValueChange}
-      handleMenPress={handleMenPress}
-      handleWomenPress={handleWomenPress}
-      handleAllPress={handleAllPress}
+
     />
   );
 };
