@@ -8,9 +8,13 @@ const SettingsScreenPresenter = () => {
   const [gender, setGender] = useState('all');
   const [selectedSportsOption, setSelectedSportsOption] = useState('');  
   const [customSports, setCustomSports] = useState([
-    { name: 'Padel', selected: true },
-    { name: 'Football', selected: true },
-    { name: 'Gym', selected: true },
+    { name: 'Padel', selected: false },
+    { name: 'Football', selected: false },
+    { name: 'Gym', selected: false },
+    { name: 'Tennis', selected: false},
+    { name: 'Run', selected: false},
+    { name: 'Kayak', selected: false},
+    { name: 'Bike', selected: false}
   ]);
 
   function handleCustomSportsInputChange(value) {
@@ -37,27 +41,27 @@ const SettingsScreenPresenter = () => {
     setAgeInterval(value);
   };
 
-  const handleMatchingSportsPressWithSelection = () => {
+  const handleMatchingSportsPress = () => {
     setSelectedSportsOption('matching');
   };
 
-  const handleAllSportsPressWithSelection = () => {
+  const handleAllSportsPress = () => {
     setSelectedSportsOption('all');
   };
 
-  const handleCustomSportsPressWithSelection = () => {
+  const handleCustomSportsPress = () => {
     setSelectedSportsOption('custom');
   };
 
-  const handleMenPressWithSelection = () => {
+  const handleMenPress = () => {
     setGender('men');
   };
 
-  const handleWomenPressWithSelection = () => {
+  const handleWomenPress = () => {
     setGender('women');
   };
 
-  const handleAllPressWithSelection = () => {
+  const handleAllPress = () => {
     setGender('all');
   };
 
@@ -70,12 +74,12 @@ const SettingsScreenPresenter = () => {
       ageInterval={ageInterval}
       gender={gender}
       selectedSportsOption={selectedSportsOption}
-      handleMatchingSportsPressWithSelection={handleMatchingSportsPressWithSelection}
-      handleAllSportsPressWithSelection={handleAllSportsPressWithSelection}
-      handleCustomSportsPressWithSelection={handleCustomSportsPressWithSelection}
-      handleMenPressWithSelection={handleMenPressWithSelection}
-      handleWomenPressWithSelection={handleWomenPressWithSelection}
-      handleAllPressWithSelection={handleAllPressWithSelection}
+      handleMatchingSportsPress={handleMatchingSportsPress}
+      handleAllSportsPress={handleAllSportsPress}
+      handleCustomSportsPress={handleCustomSportsPress}
+      handleMenPress={handleMenPress}
+      handleWomenPress={handleWomenPress}
+      handleAllPress={handleAllPress}
       handleCustomSportsInputChange={handleCustomSportsInputChange}
       setDistance={setDistance}
       handleAgeIntervalValueChange={handleAgeIntervalValueChange}

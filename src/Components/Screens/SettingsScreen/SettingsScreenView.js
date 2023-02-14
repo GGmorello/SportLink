@@ -9,22 +9,21 @@ const SettingsScreenView = ({
   customSportsInput,
   distance,
   ageInterval,
-  handleMatchingSportsPressWithSelection,
-  handleAllSportsPressWithSelection,
-  handleCustomSportsPressWithSelection,
+  handleMatchingSportsPress,
+  handleAllSportsPress,
+  handleCustomSportsPress,
   handleCustomSportsInputChange,
   setDistance,
   handleAgeIntervalValueChange,
-  handleMenPressWithSelection,
-  handleWomenPressWithSelection,
-  handleAllPressWithSelection,
+  handleMenPress,
+  handleWomenPress,
+  handleAllPress,
   handleCustomSportsInputSubmit,
   handleCustomSportPress
 }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Settings</Text>
       <View style={styles.section}>
         <Text style={styles.subtitle}>Sports Selection:</Text>
         <TouchableOpacity
@@ -32,7 +31,7 @@ const SettingsScreenView = ({
             styles.button,
             selectedSportsOption === 'matching' && styles.selectedButton,
           ]}
-          onPress={handleMatchingSportsPressWithSelection}
+          onPress={handleMatchingSportsPress}
         >
           <Text style={styles.buttonText}>Matching my sports</Text>
         </TouchableOpacity>
@@ -41,7 +40,7 @@ const SettingsScreenView = ({
             styles.button,
             selectedSportsOption === 'all' && styles.selectedButton,
           ]}
-          onPress={handleAllSportsPressWithSelection}
+          onPress={handleAllSportsPress}
         >
           <Text style={styles.buttonText}>All sports</Text>
         </TouchableOpacity>
@@ -50,7 +49,7 @@ const SettingsScreenView = ({
             styles.button,
             selectedSportsOption === 'custom' && styles.selectedButton,
           ]}
-          onPress={handleCustomSportsPressWithSelection}
+          onPress={handleCustomSportsPress}
         >
           <Text style={styles.buttonText}>Custom</Text>
         </TouchableOpacity>
@@ -64,22 +63,20 @@ const SettingsScreenView = ({
               placeholder="Create your list of sports"
               placeholderTextColor="#999"
             />
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-              <View style={styles.customSportsList}>
-                {customSports.map((sport, index) => (
-                  <Text
-                    key={index}
-                    style={[
-                      styles.customSport,
-                      sport.selected && styles.selectedCustomSport,
-                    ]}
-                    onPress={() => handleCustomSportPress(sport)}
-                  >
-                    {sport.name}
-                  </Text>
-                ))}
-              </View>
-            </ScrollView>
+            <View style={styles.customSportsList}>
+              {customSports.map((sport, index) => (
+                <Text
+                  key={index}
+                  style={[
+                    styles.customSport,
+                    sport.selected && styles.selectedCustomSport,
+                  ]}
+                  onPress={() => handleCustomSportPress(sport)}
+                >
+                  {sport.name}
+                </Text>
+              ))}
+            </View>
           </View>
         )}
       </View>
@@ -105,13 +102,13 @@ const SettingsScreenView = ({
           />
       </View>
       <View style={styles.genderButtonContainer}>
-        <Text style={styles.genderButtonText}>Gender:</Text>
+        <Text style={styles.subtitle}>Show me:</Text>
         <TouchableOpacity
           style={[
             styles.genderButton,
             gender === 'men' && styles.selectedButton,
           ]}
-          onPress={handleMenPressWithSelection}
+          onPress={handleMenPress}
         >
           <Text style={styles.genderButtonText}>Men</Text>
         </TouchableOpacity>
@@ -120,7 +117,7 @@ const SettingsScreenView = ({
             styles.genderButton,
             gender === 'women' && styles.selectedButton,
           ]}
-          onPress={handleWomenPressWithSelection}
+          onPress={handleWomenPress}
         >
           <Text style={styles.genderButtonText}>Women</Text>
         </TouchableOpacity>
@@ -129,7 +126,7 @@ const SettingsScreenView = ({
             styles.genderButton,
             gender === 'all' && styles.selectedButton,
           ]}
-          onPress={handleAllPressWithSelection}
+          onPress={handleAllPress}
         >
           <Text style={styles.buttonText}>All</Text>
         </TouchableOpacity>

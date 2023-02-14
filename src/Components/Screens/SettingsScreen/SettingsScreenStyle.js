@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#fff',
+    backgroundColor: '#f2f2f2',
   },
   title: {
     fontSize: 24,
@@ -23,42 +23,52 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 16,
-    backgroundColor: '#f1f1f1',
-    borderRadius: 8,
+    backgroundColor: '#ffffff',
+    borderRadius: 15,
     width: '100%',
     alignItems: 'center',
+    borderWidth: 3,
+    borderColor: '#f2f2f2',
   },
   buttonText: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#4B4B4B',
   },
   customSportsInputContainer: {
     marginBottom: 16,
   },
   customSportsInput: {
     height: 40,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: '#ccc',
     borderRadius: 8,
     paddingHorizontal: 8,
+    backgroundColor: '#fff'
   },
+  
   customSportsList: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginTop: 10,
   },
+
   customSport: {
-    backgroundColor: '#eee',
-    padding: 10,
-    borderRadius: 20,
-    marginRight: 10,
-    marginBottom: 10,
-    textAlign: 'center',
+        flexDirection: 'row', 
+        backgroundColor: '#f2f2f2',
+        borderColor:'#B4CBF0',
+        borderWidth: 1,
+        marginRight: 10,
+        marginBottom: 10,
+        paddingTop: 5,
+        paddingBottom: 5,
+        paddingRight: 10,
+        paddingLeft: 10,
+        borderRadius: 10
   },
   
   selectedCustomSport: {
-    color: 'white',
-    backgroundColor: '#2596be',
+    backgroundColor: '#B4CBF0',
   },
 
   sliderContainer: {
@@ -75,17 +85,20 @@ const styles = StyleSheet.create({
   },
   genderButton: {
     padding: 16,
-    backgroundColor: '#f1f1f1',
-    borderRadius: 8,
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
     width: '27%',
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#f2f2f2',
   },
   genderButtonText: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: 'bold',
+    color: '#4B4B4B',
   },
   selectedButton: {
-    backgroundColor: '#ccc',
+    backgroundColor: '#B4CBF0',
   }
 });
 
