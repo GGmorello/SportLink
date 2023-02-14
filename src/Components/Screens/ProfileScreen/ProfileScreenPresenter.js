@@ -2,6 +2,7 @@ import React from "react";
 import ProfileScreenView from "./ProfileScreenView";
 import { View } from "react-native"
 import NavigationBarPresenter from "../../NavigationBar/NavigationBarPresenter"
+import style from "./ProfileScreenStyle"
 
 
 export default function ProfileScreenPresenter(props) {
@@ -9,8 +10,10 @@ export default function ProfileScreenPresenter(props) {
     props.navigation.navigate('EditProfileScreen')
   }
 
-  return (<View>
+  return (<View style={style.screen}>
     <ProfileScreenView navigation={props.navigation} onProfilePress={onProfilePressEdit}/>
-    <NavigationBarPresenter navigation={props.navigation} />
+    <View style={style.navigationBar}>
+      <NavigationBarPresenter navigation={props.navigation} />
+    </View>
   </View>)
 }

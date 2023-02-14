@@ -9,6 +9,7 @@ import { Button } from "react-native-web";
 export default function EditScreenView(props) {
 
     const [text, onChangeText] = React.useState('Hej! I’m a student looking forward to meeting new people who exercising with.')
+    const [text2, onChangeText2] = React.useState('Black belt in Karate 4 years member of kayak school team')
 
     const [isModalVisible, setModalVisible] = useState(false);
     const [isModalVisibleLookingFor, setModalVisibleLookingFor] = useState(false);
@@ -19,17 +20,14 @@ export default function EditScreenView(props) {
     }
 
     const toggleModal = () => {
-        console.log("hello");
         setModalVisible(!isModalVisible);
     };
     
     const toggleModalLookingFor = () => {
-        console.log("hello");
         setModalVisibleLookingFor(!isModalVisibleLookingFor);
     };
 
     const toggleModalDistance = () => {
-        console.log("hello");
         setModalVisibleDistance(!isModalVisibleDistance);
     };
 
@@ -123,6 +121,10 @@ export default function EditScreenView(props) {
                             <MaterialIcons name="add" size={20} color="#FFFFFF"></MaterialIcons>
                         </View>
                     </View>
+                </View>
+                <Text style={style.subtitle}>Achievements</Text>
+                <View style={[style.infoContainer, {backgroundColor: '#b4cbf0'}]}>
+                    <TextInput style={[style.subtext, {margin: 6}]} multiline onChangeText={onChangeText} value={text2}></TextInput>
                 </View>
                 <Modal
                     onBackdropPress={() => setModalVisible(false)}

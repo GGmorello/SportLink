@@ -6,7 +6,6 @@ import { useRoute } from "@react-navigation/native"
 
 export default function ShowImageScreenPresenter(props) {
   let img = props.route.params.img
-  console.log(img);
 
   return (<View>
     <ShowImageScreenView image={img}/>

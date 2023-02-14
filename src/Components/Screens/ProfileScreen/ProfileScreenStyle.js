@@ -3,6 +3,14 @@ import { StyleSheet, Dimensions} from "react-native"
 let deviceWidth = Dimensions.get("window").width;
 
 const style = StyleSheet.create({
+    screen: {
+        flex: 1
+    },
+    navigationBar:{
+        position: 'absolute',
+        width: '100%',
+        bottom: 0
+    },
     container: {
         flex: 1,
         paddingTop: 30
@@ -35,6 +43,11 @@ const style = StyleSheet.create({
         fontSize: 15,
         textAlign: 'center'
     },
+    subtext2:{
+        color: "#3f3f3f",
+        fontSize: 15,
+        textAlign: 'left'
+    },
     infoContainer: {
         alignSelf: "center",
         alignItems: "center",
@@ -42,6 +55,10 @@ const style = StyleSheet.create({
         marginBottom: 0,
         marginLeft: 15,
         marginRight: 15
+    },
+    infoContainer3: {
+        marginLeft: 25,
+        paddingBottom: 10
     },
     infoContainer2: {
         marginTop: 5,
@@ -64,7 +81,8 @@ const style = StyleSheet.create({
         backgroundColor: "#B4CBF0",
         position: "absolute",
         right: 20,
-        bottom: 0,
+        bottom: 85,
+        elevation: 3,
         width: 55,
         height: 55,
         borderRadius: 30,
