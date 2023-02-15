@@ -28,15 +28,32 @@ export default function SwipeScreenView(props) {
         setPerson(mick);
     }
 
+    function showNextImage(imageIndex) {
+        console.log(imageIndex);
+        if (imageIndex + 1 < 3) {
+            setImage(imageIndex+1);
+        }
+        console.log(imageIndex);
+    }
+
+    function showPreviousImage(imageIndex) {
+        console.log(imageIndex);
+        if (imageIndex - 1 >= 0) {
+            setImage(imageIndex-1);
+        }
+        console.log(imageIndex);
+    }
+
     const [person, setPerson] = useState(erik);
+    const [image, setImage] = useState(0)
 
     return (
         <View style={styles.screenLayout}>
             <View style={styles.rowContainer}>
-                <ImageBackground source={person.images[0]} style={styles.image}>
+                <ImageBackground source={person.images[image]} style={styles.image}>
                     <View style={{...styles.rowContainer, marginHorizontal: 5, marginVertical: 5, justifyContent:"space-between", marginTop:"auto"}}>
-                        <FontAwesome name="chevron-circle-left" size={25} color="#FFFFFF"/>
-                        <FontAwesome name="chevron-circle-right" size={25} color="#FFFFFF"/>
+                        <FontAwesome name="chevron-circle-left" size={25} color="#FFFFFF" onPress={() => showPreviousImage(image)}/>
+                        <FontAwesome name="chevron-circle-right" size={25} color="#FFFFFF" onPress={() => showNextImage(image)}/>
                     </View>
                 </ImageBackground>
                 <View>
