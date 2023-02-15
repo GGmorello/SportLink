@@ -55,6 +55,16 @@ const styles = StyleSheet.create({
       paddingLeft: 10,
       borderRadius: 10
   },
+  icon: {
+    width:25,
+    height:25,
+    marginRight: 10
+  },
+  iconText: {
+    fontSize: 14,
+    color: '#000000',
+    marginTop: 2
+  },
   approveButton: {
     width: 65,
     height: 65,

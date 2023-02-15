@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {View, Text, TouchableOpacity} from "react-native";
+import {View, Text, Image, TouchableOpacity} from "react-native";
 import styles from "./SwipeScreenStyle";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { ImageBackground } from "react-native-web";
@@ -11,7 +11,7 @@ export default function SwipeScreenView(props) {
         "age": 28,
         "distance": 5,
         "images": [require('./images/erik1.jpg'), require('./images/erik2.jpg'), require('./images/erik3.jpg')],
-        "interests": ["Padel"],
+        "interests": [{name:"Padel", icon:require('./images/tennis-racket.png')}],
         "biography": "Im an extrovert who enjoys doing sports with other people. I wish to find a running partner so we can motivate each other, and a padel partner to team with for an upcoming tournament (medium level). My achievements are: together with my partner, we placed second in a local padel tournament here in Stockholm. In regards to running, I have ran multiple marathon, and my personal best time is 3 hours and 37 minutes."
     }
 
@@ -20,28 +20,25 @@ export default function SwipeScreenView(props) {
         "age": 28,
         "distance": 10,
         "images": [require('./images/mick1.jpg'), require('./images/mick2.jpg'), require('./images/mick3.jpg')],
-        "interests": ["Padel, Jogging"],
+        "interests": [{name:"Padel", icon:require('./images/tennis-racket.png')}, {name:"Jogging", icon:require('./images/runicon.png')}],
         "biography": "Im an extrovert who enjoys doing sports with other people. I wish to find a running partner so we can motivate each other, and a padel partner to team with for an upcoming tournament (medium level). My achievements are: together with my partner, we placed second in a local padel tournament here in Stockholm. In regards to running, I have ran multiple marathon, and my personal best time is 3 hours and 37 minutes."
     }
 
     function onButtonClick() {
         setPerson(mick);
+        setImage(0);
     }
 
     function showNextImage(imageIndex) {
-        console.log(imageIndex);
         if (imageIndex + 1 < 3) {
             setImage(imageIndex+1);
         }
-        console.log(imageIndex);
     }
 
     function showPreviousImage(imageIndex) {
-        console.log(imageIndex);
         if (imageIndex - 1 >= 0) {
             setImage(imageIndex-1);
         }
-        console.log(imageIndex);
     }
 
     const [person, setPerson] = useState(erik);
@@ -65,9 +62,17 @@ export default function SwipeScreenView(props) {
             <Text style={styles.sectionTitle}>
                 Interests
             </Text>
-            <View style={{...styles.rowContainer, borderColor: "#DEDEDE", borderBottomWidth: 1}}>
-
+            <View style={styles.rowContainer}>
+                {
+                    person.interests.map((interest) => {
+                        return (<View style={styles.containerIcon}>
+                            <Image source={interest.icon} style={styles.icon}/>
+                            <Text style={styles.iconText}>{interest.name}</Text>
+                        </View>
+                    )})
+                }
             </View>
+            <View style={{...styles.rowContainer, borderColor: "#DEDEDE", borderBottomWidth: 1}}/>
             <Text style={styles.sectionTitle}>
                 Biography
             </Text>
