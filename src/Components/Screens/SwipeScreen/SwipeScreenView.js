@@ -3,6 +3,7 @@ import {ScrollView, View, Text, Image, TouchableOpacity} from "react-native";
 import styles from "./SwipeScreenStyle";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { ImageBackground } from "react-native-web";
+import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 
 export default function SwipeScreenView(props) {
 
@@ -41,57 +42,84 @@ export default function SwipeScreenView(props) {
         }
     }
 
+    function onSwipeLeft(gestureState) {
+        setPerson(mick);
+    }
+
     const [person, setPerson] = useState(erik);
     const [image, setImage] = useState(0)
 
+    const config = {
+        velocityThreshold: 0.3,
+        directionalOffsetThreshold: 80
+    };
+
+    function onSwipe(gestureName, gestureState) {
+        const {SWIPE_LEFT} = swipeDirections;
+        switch (gestureName) {
+          case SWIPE_LEFT:
+            setPerson(mick);
+            break;
+        }
+      }
+
     return (
-        <ScrollView style={styles.screenLayout}>
-            <View style={styles.rowContainer}>
-                <ImageBackground source={person.images[image]} style={styles.image}>
-                    <View style={{...styles.rowContainer, marginHorizontal: 5, marginVertical: 5, justifyContent:"space-between", marginTop:"auto"}}>
-                        <FontAwesome name="chevron-circle-left" size={25} color="#FFFFFF" onPress={() => showPreviousImage(image)}/>
-                        <FontAwesome name="chevron-circle-right" size={25} color="#FFFFFF" onPress={() => showNextImage(image)}/>
-                    </View>
-                </ImageBackground>
-                <View>
-                    <Text style={styles.name}>{person.name}</Text>
-                    <Text style={styles.age}>{person.age}</Text>
-                    <Text style={styles.distance}>{person.distance}km away</Text>
-                </View>
-            </View>
-            <Text style={styles.sectionTitle}>
-                Interests
-            </Text>
-            <View style={styles.rowContainer}>
-                {
-                    person.interests.map((interest) => {
-                        return (<View style={styles.containerIcon}>
-                            <Image source={interest.icon} style={styles.icon}/>
-                            <Text style={styles.iconText}>{interest.name}</Text>
+        <GestureRecognizer
+        onSwipe={(direction, state) => onSwipe(direction, state)}
+        onSwipeLeft={(state) => onSwipeLeft(state)}
+        config={config}
+        style={{
+          flex: 1,
+        }}
+        >
+            <ScrollView style={styles.screenLayout}>
+                <View style={styles.rowContainer}>
+                    <ImageBackground source={person.images[image]} style={styles.image}>
+                        <View style={{...styles.rowContainer, marginHorizontal: 5, marginVertical: 5, justifyContent:"space-between", marginTop:"auto"}}>
+                            <FontAwesome name="chevron-circle-left" size={25} color="#FFFFFF" onPress={() => showPreviousImage(image)}/>
+                            <FontAwesome name="chevron-circle-right" size={25} color="#FFFFFF" onPress={() => showNextImage(image)}/>
                         </View>
-                    )})
-                }
-            </View>
-            <View style={{...styles.rowContainer, borderColor: "#DEDEDE", borderBottomWidth: 1}}/>
-            <Text style={styles.sectionTitle}>
-                Biography
-            </Text>
-            <Text>
-                {person.biography}
-            </Text>
-            <View style={{...styles.rowContainer, justifyContent:"space-between", marginHorizontal: 20, marginVertical: 20}}>
-                <TouchableOpacity
-                    onPress={() => onButtonClick()}
-                    style={styles.rejectButton}
-                >
-                    <FontAwesome name="close" color="#FFFFFF" size={35} />
-                </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={() => onButtonClick()}
-                    style={styles.approveButton}
-                >
-                    <FontAwesome name="check" color="#FFFFFF" size={35}/>
-                </TouchableOpacity>
-            </View>
-        </ScrollView>)
-}
+                    </ImageBackground>
+                    <View>
+                        <Text style={styles.name}>{person.name}</Text>
+                        <Text style={styles.age}>{person.age}</Text>
+                        <Text style={styles.distance}>{person.distance}km away</Text>
+                    </View>
+                </View>
+                <Text style={styles.sectionTitle}>
+                    Interests
+                </Text>
+                <View style={styles.rowContainer}>
+                    {
+                        person.interests.map((interest) => {
+                            return (<View style={styles.containerIcon}>
+                                <Image source={interest.icon} style={styles.icon}/>
+                                <Text style={styles.iconText}>{interest.name}</Text>
+                            </View>
+                        )})
+                    }
+                </View>
+                <View style={{...styles.rowContainer, borderColor: "#DEDEDE", borderBottomWidth: 1}}/>
+                <Text style={styles.sectionTitle}>
+                    Biography
+                </Text>
+                <Text>
+                    {person.biography}
+                </Text>
+                <View style={{...styles.rowContainer, justifyContent:"space-between", marginHorizontal: 20, marginVertical: 20}}>
+                    <TouchableOpacity
+                        onPress={() => onButtonClick()}
+                        style={styles.rejectButton}
+                    >
+                        <FontAwesome name="close" color="#FFFFFF" size={35} />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => onButtonClick()}
+                        style={styles.approveButton}
+                    >
+                        <FontAwesome name="check" color="#FFFFFF" size={35}/>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
+        </GestureRecognizer>)
+}   
