@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {View, Text, Image, TouchableOpacity} from "react-native";
+import {ScrollView, View, Text, Image, TouchableOpacity} from "react-native";
 import styles from "./SwipeScreenStyle";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { ImageBackground } from "react-native-web";
@@ -45,7 +45,7 @@ export default function SwipeScreenView(props) {
     const [image, setImage] = useState(0)
 
     return (
-        <View style={styles.screenLayout}>
+        <ScrollView style={styles.screenLayout}>
             <View style={styles.rowContainer}>
                 <ImageBackground source={person.images[image]} style={styles.image}>
                     <View style={{...styles.rowContainer, marginHorizontal: 5, marginVertical: 5, justifyContent:"space-between", marginTop:"auto"}}>
@@ -93,5 +93,5 @@ export default function SwipeScreenView(props) {
                     <FontAwesome name="check" color="#FFFFFF" size={35}/>
                 </TouchableOpacity>
             </View>
-        </View>)
+        </ScrollView>)
 }
