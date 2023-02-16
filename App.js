@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -8,6 +9,7 @@ import MessageScreenPresenter from './src/Components/Screens/MessageScreen/Messa
 import ShowImageScreenPresenter from './src/Components/Screens/ShowImageScreen/ShowImageScreenPresenter';
 import EditScreenPresenter from './src/Components/Screens/ProfileScreen/EditScreenPresenter';
 import ChatScreenPresenter from './src/Components/Screens/ChatScreen/ChatScreenPresenter';
+import SettingsScreenPresenter from './src/Components/Screens/SettingsScreen/SettingsScreenPresenter';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +40,10 @@ export default function App() {
         <Stack.Screen
           name="EditProfileScreen"
           component={EditScreenPresenter}
+        />
+        <Stack.Screen
+          name="SettingsScreen"
+          component={SettingsScreenPresenter}
         />
       </Stack.Navigator>
     </NavigationContainer>
