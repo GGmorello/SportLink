@@ -27,6 +27,7 @@
     "react-native-autocomplete-input": "^5.2.0",
     "react-native-btr": "^2.2.0",
     "react-native-fontawesome": "^7.0.0",
+    "react-native-swipe-gestures": "^1.0.5",
     "react-native-gesture-handler": "~2.8.0",
     "react-native-range-slider": "^0.1.2",
     "react-native-reanimated": "~2.12.0",

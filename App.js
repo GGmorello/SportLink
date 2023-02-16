@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -10,16 +10,21 @@ import ShowImageScreenPresenter from './src/Components/Screens/ShowImageScreen/S
 import EditScreenPresenter from './src/Components/Screens/ProfileScreen/EditScreenPresenter';
 import ChatScreenPresenter from './src/Components/Screens/ChatScreen/ChatScreenPresenter';
 import SettingsScreenPresenter from './src/Components/Screens/SettingsScreen/SettingsScreenPresenter';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import SettingsScreenView from './src/Components/Screens/SettingsScreen/SettingsScreenView';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ animation: 'none' }}>
+      <Stack.Navigator screenOptions={{ animation: 'none'}}>
         <Stack.Screen
           name="SwipeScreen"
           component={SwipeScreenPresenter}
+          options={({ navigation }) => ({
+            headerRight: (props) => <Settings {...props} navigation={navigation}/>
+          })}
         />
         <Stack.Screen
           name="ProfileScreen"
@@ -48,6 +53,17 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>
   );
+}
+
+function Settings({navigation}) {
+  return (
+    <FontAwesome 
+      name='cog'
+      size={30}
+      style={{marginRight:20}}
+      onPress={() => navigation.navigate('SettingsScreen')}
+    />
+  )
 }
 
 const styles = StyleSheet.create({
