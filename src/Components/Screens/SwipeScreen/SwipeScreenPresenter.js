@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-native";
 import SwipeScreenView from "./SwipeScreenView";
 import { View } from "react-native"
 import NavigationBarPresenter from "../../NavigationBar/NavigationBarPresenter"

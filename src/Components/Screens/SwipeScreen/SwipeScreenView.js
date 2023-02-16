@@ -122,4 +122,4 @@ export default function SwipeScreenView(props) {
                 </View>
             </ScrollView>
         </GestureRecognizer>)
-}   
+}  
