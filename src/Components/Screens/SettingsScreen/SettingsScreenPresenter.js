@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import SettingsScreenView from './SettingsScreenView';
+import { debounce } from 'lodash';
+
 
 const SettingsScreenPresenter = () => {
   const [customSportsInput, setCustomSportsInput] = useState('');
   const [distance, setDistance] = useState(0);
-  const [ageInterval, setAgeInterval] = useState(0);
+  const [age, setAge] = useState(0);
   const [gender, setGender] = useState('all');
   const [selectedSportsOption, setSelectedSportsOption] = useState('');  
   const [customSports, setCustomSports] = useState([
@@ -37,8 +39,13 @@ const SettingsScreenPresenter = () => {
     ));
   };
 
-  const handleAgeIntervalValueChange = (value) => {
-    setAgeInterval(value);
+
+  const handleDistanceChange = (value) => {
+    setDistance(value);
+  };
+
+  const handleAgeChange = (value) => {
+    setAge(value);
   };
 
   const handleMatchingSportsPress = () => {
@@ -71,9 +78,9 @@ const SettingsScreenPresenter = () => {
     <SettingsScreenView
       customSportsInput={customSportsInput}
       distance={distance}
-      ageInterval={ageInterval}
       gender={gender}
       selectedSportsOption={selectedSportsOption}
+      age={age}
       handleMatchingSportsPress={handleMatchingSportsPress}
       handleAllSportsPress={handleAllSportsPress}
       handleCustomSportsPress={handleCustomSportsPress}
@@ -81,8 +88,8 @@ const SettingsScreenPresenter = () => {
       handleWomenPress={handleWomenPress}
       handleAllPress={handleAllPress}
       handleCustomSportsInputChange={handleCustomSportsInputChange}
-      setDistance={setDistance}
-      handleAgeIntervalValueChange={handleAgeIntervalValueChange}
+      handleDistanceChange={handleDistanceChange}
+      handleAgeChange={handleAgeChange}
       handleCustomSportsInputSubmit={handleCustomSportsInputSubmit}
       customSports={customSports}
       handleCustomSportPress={handleCustomSportPress}

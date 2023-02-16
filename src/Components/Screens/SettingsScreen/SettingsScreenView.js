@@ -1,5 +1,8 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, TextInput, Slider, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput } from 'react-native';
+import Slider from '@react-native-community/slider';
+import { debounce } from 'lodash';
+
 import styles from './SettingsScreenStyle';
 
 const SettingsScreenView = ({
@@ -8,19 +11,22 @@ const SettingsScreenView = ({
   selectedSportsOption,
   customSportsInput,
   distance,
-  ageInterval,
+  age,
   handleMatchingSportsPress,
   handleAllSportsPress,
   handleCustomSportsPress,
   handleCustomSportsInputChange,
-  setDistance,
-  handleAgeIntervalValueChange,
+  handleDistanceChange,
+  handleAgeChange,
   handleMenPress,
   handleWomenPress,
   handleAllPress,
   handleCustomSportsInputSubmit,
   handleCustomSportPress
 }) => {
+
+  const debouncedHandleDistanceChange = debounce(handleDistanceChange, 50);
+  const debouncedHandleAgeChange = debounce(handleAgeChange, 50);
 
   return (
     <View style={styles.container}>
@@ -81,26 +87,29 @@ const SettingsScreenView = ({
         )}
       </View>
       <View style={styles.sliderContainer}>
-        <Text style={styles.subtitle}>Distance: {distance} km</Text>
+        <Text style={styles.subtitle}>Age: {Math.trunc(age)}</Text>
+          <Slider
+            value={age}
+            onValueChange={debouncedHandleAgeChange}
+            minimumValue={18}
+            maximumValue={100}
+            style={styles.slider}
+          />
+      </View>
+      <View style={styles.sliderContainer}>
+        <Text style={styles.subtitle}>Distance: {Math.trunc(distance)} km</Text>
+
         <Slider
           value={distance}
-          onValueChange={distance => setDistance(value)}
+          onValueChange={debouncedHandleDistanceChange}
           minimumValue={0}
           maximumValue={150}
           style={styles.slider}
         />
+
       </View>
-      <View style={styles.sliderContainer}>
-        <Text style={styles.subtitle}>Age Interval: {ageInterval}</Text>
-          <Slider
-            values={ageInterval}
-            onValuesChange={handleAgeIntervalValueChange}
-            minimumValue={18}
-            maximumValue={60}
-            step={1}
-            style={styles.slider}
-          />
-      </View>
+      
+
       <View style={styles.genderButtonContainer}>
         <Text style={styles.subtitle}>Show me:</Text>
         <TouchableOpacity
