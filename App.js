@@ -9,6 +9,7 @@ import MessageScreenPresenter from './src/Components/Screens/MessageScreen/Messa
 import ShowImageScreenPresenter from './src/Components/Screens/ShowImageScreen/ShowImageScreenPresenter';
 import EditScreenPresenter from './src/Components/Screens/ProfileScreen/EditScreenPresenter';
 import ChatScreenPresenter from './src/Components/Screens/ChatScreen/ChatScreenPresenter';
+import SettingsScreenPresenter from './src/Components/Screens/SettingsScreen/SettingsScreenPresenter';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +40,10 @@ export default function App() {
         <Stack.Screen
           name="EditProfileScreen"
           component={EditScreenPresenter}
+        />
+        <Stack.Screen
+          name="SettingsScreen"
+          component={SettingsScreenPresenter}
         />
       </Stack.Navigator>
     </NavigationContainer>
