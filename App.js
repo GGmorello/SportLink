@@ -23,31 +23,39 @@ export default function App() {
           name="SwipeScreen"
           component={SwipeScreenPresenter}
           options={({ navigation }) => ({
-            headerRight: (props) => <Settings {...props} navigation={navigation}/>
+            headerRight: (props) => <Settings {...props} navigation={navigation}/>,
+            title: 'SportLink' ,
+
           })}
         />
         <Stack.Screen
           name="ProfileScreen"
+          options={{ title: 'Profile' }}
           component={ProfileScreenPresenter}
         />
         <Stack.Screen
           name="ChatScreen"
+          options={{ title: 'Chat' }}
           component={ChatScreenPresenter}
         />
         <Stack.Screen
           name="MessageScreen"
+          options={{ title: 'Matches' }}
           component={MessageScreenPresenter}
         />
         <Stack.Screen
           name="ShowImage"
+          options={{ title: '' }}
           component={ShowImageScreenPresenter}
         />
         <Stack.Screen
           name="EditProfileScreen"
+          options={{ title: 'Edit Profile' }}
           component={EditScreenPresenter}
         />
         <Stack.Screen
           name="SettingsScreen"
+          options={{ title: 'Settings' }}
           component={SettingsScreenPresenter}
         />
       </Stack.Navigator>

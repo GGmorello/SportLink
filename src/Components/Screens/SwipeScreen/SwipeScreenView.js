@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {ScrollView, View, Text, Image, TouchableOpacity} from "react-native";
 import styles from "./SwipeScreenStyle";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { ImageBackground } from "react-native-web";
+import { ImageBackground } from "react-native";
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 
 export default function SwipeScreenView(props) {
