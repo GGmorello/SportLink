@@ -13,16 +13,20 @@ const styles = StyleSheet.create({
       list:{
         paddingHorizontal: 0,
         marginHorizontal: 5,
-        flex:1
       },
       footer:{
         flexDirection: 'row',
         position: "absolute",
+        justifyContent:'center',
         width: "100%",
         bottom: 0,
+        alignItems:'center',
+
       },
       headerContainer:{
         width: "100%",
+        backgroundColor: "#b4cbf0",
+        paddingVertical: 5,
         alignItems: "center",
         justifyContent: "center"
       },
@@ -35,6 +39,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
       },
       name: {
+        marginHorizontal: 10, 
         color: 'black',
         fontSize: 20,
         alignSelf: "center",
@@ -42,13 +47,13 @@ const styles = StyleSheet.create({
         textAlign: 'left',
       },
       btnSend:{
-        backgroundColor:"#00BFFF",
+        backgroundColor:"#b4cbf0",
         width:40,
         height:40,
         borderRadius:360,
-        alignItems:'center',
-        justifyContent:'center',
-        marginTop:10
+        alignSelf: 'center',
+        margin:10,
+        paddingTop:5,
       },
       iconSend:{
         width:30,
@@ -86,9 +91,11 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
       },
       itemIn: {
+        backgroundColor: "white",
         alignSelf: 'flex-start'
       },
       itemOut: {
+        backgroundColor: "#b4cbf0",
         alignSelf: 'flex-end'
       },
       time: {
