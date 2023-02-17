@@ -12,9 +12,9 @@ import {
 export default function ChatScreenView(props) {
     let match = {
         id: "1",
-        name: "Test Name",
+        name: props.match.name,
         messagePreview: "This is a sample message...",
-        imageUrl: "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
+        imageUrl: props.match.imageUrl,
     }
 
     let messageHistory = props.messageHistory

@@ -7,9 +7,9 @@ import styles from "./MessageScreenStyle"
 
 export default function MessageScreenPresenter({ navigation }) {
 
-  function onChatClick(id){
+  function onChatClick(match){
     navigation.navigate('ChatScreen', {
-      id: id,})
+      match: match,})
   }
 
 

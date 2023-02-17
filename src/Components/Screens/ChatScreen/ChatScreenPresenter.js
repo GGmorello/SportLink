@@ -6,7 +6,7 @@ import styles from "./ChatScreenStyle";
 
 
 export default function ChatScreenPresenter({ route, navigation }) {
-  //const {id} = route.params;
+  const {match} = route.params;
   const [messageHistory, setMessageHistory] = useState([
     {id: 1, date: "09:23", type: "in", message: "Hey! Let's play some sports!"},
     {id: 2, date: "09:25", type: "out", message: "Hello! Sure thing, I would love to play some sports!"},
@@ -61,6 +61,7 @@ function onType(data){
 }
   return (
   <ChatScreenView
+    match = {match}
     style= {styles.screen}
     currentMessage = {currMessage}
     messageHistory = {messageHistory}
