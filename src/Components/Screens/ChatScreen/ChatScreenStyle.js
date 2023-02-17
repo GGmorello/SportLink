@@ -13,15 +13,17 @@ const styles = StyleSheet.create({
       list:{
         paddingHorizontal: 0,
         marginHorizontal: 5,
+        marginBottom: 60,
       },
       footer:{
+        backgroundColor: "#fff",
         flexDirection: 'row',
         position: "absolute",
         justifyContent:'center',
         width: "100%",
+        height: 50,
         bottom: 0,
         alignItems:'center',
-
       },
       headerContainer:{
         width: "100%",
