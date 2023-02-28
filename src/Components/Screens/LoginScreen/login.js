@@ -38,7 +38,7 @@ function LoginScreen({ navigation }) {
   return (
     <View style={styles.loginScreenContainer}>
       <View style={styles.loginFormView}>
-        <Text style={styles.logoText}>Log In</Text>
+        <Text style={styles.logoText}>Login</Text>
         <TextInput
           placeholder="Email"
           onChangeText={(text) => setEmail(text)}

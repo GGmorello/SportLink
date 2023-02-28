@@ -55,6 +55,7 @@ export default function SignUpPage({ navigation }) {
   return (
     <View style={styles.loginScreenContainer}>
       <View style={styles.loginFormView}>
+      <Text style={styles.logoText}>Sign Up</Text>
 
         <TextInput
           placeholder="Email"
