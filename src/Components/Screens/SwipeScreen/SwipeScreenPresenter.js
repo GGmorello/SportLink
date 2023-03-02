@@ -14,6 +14,9 @@ export default function SwipeScreenPresenter({ navigation }) {
   const [latitude, setLatitude] = useState(10);
   const [longitude, setLongitude] = useState(34);
   const [radius, setRadius] = useState(100000);
+  const [person, setPerson] = useState(0);
+  const [personIndex, setPersonIndex] = useState(0);
+
 
   useEffect(() => {
     Geolocation.getCurrentPosition(
@@ -35,17 +38,36 @@ export default function SwipeScreenPresenter({ navigation }) {
     };
   }, []);
 
+  function getNextPerson(){
+    if (personIndex < 2) {
+      const newIndex = personIndex +1 
+      setPersonIndex(newIndex);
+      setPerson(users[newIndex]);
+      console.log("USERS: ",users);
+      console.log("PERSONINDEX: ",newIndex);
+    }
+  }
+
+
   function compareDistances(currentLatitude, currentLongitude) {
-    const tempUsers = [];
     const usersCollection = collection(db, "users");
+    var firstUser = true;
+    const newUsers = [...users];
     getDocs(usersCollection).then(querySnapshot => {
       querySnapshot.forEach(documentSnapshot => {
         if (isCloseTo(documentSnapshot.data().location._lat, documentSnapshot.data().location._long, currentLatitude, currentLongitude)) {
-          tempUsers.push(documentSnapshot.data());
+          const tempUser = documentSnapshot.data()
+           // this is a new array, which contains the same items from the state
+          newUsers.push(tempUser)
+          console.log("NEWUSERS", newUsers)
+          setUsers(newUsers);
+          if (firstUser){
+            setPerson(tempUser);
+            firstUser = false
+          }
         }
       });
     })
-    setUsers(tempUsers);
   }
 
   function isCloseTo(targetLatitude, targetLongitude, currentLatitude, currentLongitude) {
@@ -84,7 +106,7 @@ export default function SwipeScreenPresenter({ navigation }) {
       const unsubscribe = onSnapshot(q, (snapshot) => {
         const users = [];
         snapshot.forEach((doc) => {
-          const user = doc.data();
+          const user = doc.data(); 
           user.id = doc.id;
           users.push(user);
         });
@@ -94,11 +116,12 @@ export default function SwipeScreenPresenter({ navigation }) {
       return unsubscribe;
     }
   }, [latitude, longitude, radius]);
-
-  console.log(users)
+  
   return (
     <View style={styles.screen}>
-      <SwipeScreenView />
+      <SwipeScreenView person={person} getNextPerson={function(){
+      getNextPerson()
+    }}/>
       <View style={styles.navigationBar}>
         <NavigationBarPresenter navigation={navigation} />
       </View>

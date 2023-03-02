@@ -1,32 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {ScrollView, View, Text, Image, TouchableOpacity} from "react-native";
 import styles from "./SwipeScreenStyle";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { ImageBackground } from "react-native";
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
+import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
 export default function SwipeScreenView(props) {
 
-    let erik = {
-        "name": "Erik",
-        "age": 28,
-        "distance": 5,
-        "images": [require('./images/erik1.jpg'), require('./images/erik2.jpg'), require('./images/erik3.jpg')],
-        "interests": [{name:"Padel", icon:require('./images/tennis-racket.png')}],
-        "biography": "Im an extrovert who enjoys doing sports with other people. I wish to find a running partner so we can motivate each other, and a padel partner to team with for an upcoming tournament (medium level). My achievements are: together with my partner, we placed second in a local padel tournament here in Stockholm. In regards to running, I have ran multiple marathon, and my personal best time is 3 hours and 37 minutes."
-    }
-
-    let mick = {
-        "name": "Mick",
-        "age": 28,
-        "distance": 10,
-        "images": [require('./images/mick1.jpg'), require('./images/mick2.jpg'), require('./images/mick3.jpg')],
-        "interests": [{name:"Padel", icon:require('./images/tennis-racket.png')}, {name:"Jogging", icon:require('./images/runicon.png')}],
-        "biography": "Im an extrovert who enjoys doing sports with other people. I wish to find a running partner so we can motivate each other, and a padel partner to team with for an upcoming tournament (medium level). My achievements are: together with my partner, we placed second in a local padel tournament here in Stockholm. In regards to running, I have ran multiple marathon, and my personal best time is 3 hours and 37 minutes."
-    }
+    const [imageIndex, setImage] = useState(0);
+    const interests = {"Padel": require('./images/tennis-racket.png'), "Tennis": require('./images/tennis-racket.png'), "Squash": require('./images/tennis-racket.png'), "Jogging": require('./images/runicon.png'), "Kayak": require('./images/kayakIcon.png')}
 
     function onButtonClick() {
-        setPerson(mick);
+        props.getNextPerson();
         setImage(0);
     }
 
@@ -43,11 +29,18 @@ export default function SwipeScreenView(props) {
     }
 
     function onSwipeLeft(gestureState) {
-        setPerson(mick);
+        props.getNextPerson();
     }
 
-    const [person, setPerson] = useState(erik);
-    const [image, setImage] = useState(0)
+    function log(){
+        // console.log("CONSOLE LOG")
+        // console.log(props.person)
+        // console.log("users length:", props.person.length)
+        // console.log("CURRENT PERSON: " + props.person)
+        console.log("1:", interests);
+        console.log("2:", interests['Padel']);
+        return <div></div>
+    }
 
     const config = {
         velocityThreshold: 0.3,
@@ -58,68 +51,85 @@ export default function SwipeScreenView(props) {
         const {SWIPE_LEFT} = swipeDirections;
         switch (gestureName) {
           case SWIPE_LEFT:
-            setPerson(mick);
+            if (personIndex < props.person.length - 1) {
+                setPerson(props.person[personIndex]);
+            }
             break;
         }
       }
 
+
     return (
-        <GestureRecognizer
-        onSwipe={(direction, state) => onSwipe(direction, state)}
-        onSwipeLeft={(state) => onSwipeLeft(state)}
-        config={config}
-        style={{
-          flex: 1,
-        }}
-        >
-            <ScrollView style={styles.screenLayout}>
-                <View style={styles.rowContainer}>
-                    <ImageBackground source={person.images[image]} style={styles.image}>
-                        <View style={{...styles.rowContainer, marginHorizontal: 5, marginVertical: 5, justifyContent:"space-between", marginTop:"auto"}}>
-                            <FontAwesome name="chevron-circle-left" size={25} color="#FFFFFF" onPress={() => showPreviousImage(image)}/>
-                            <FontAwesome name="chevron-circle-right" size={25} color="#FFFFFF" onPress={() => showNextImage(image)}/>
-                        </View>
-                    </ImageBackground>
-                    <View>
-                        <Text style={styles.name}>{person.name}</Text>
-                        <Text style={styles.age}>{person.age}</Text>
-                        <Text style={styles.distance}>{person.distance}km away</Text>
-                    </View>
-                </View>
-                <Text style={styles.sectionTitle}>
-                    Interests
-                </Text>
-                <View style={styles.rowContainer}>
-                    {
-                        person.interests.map((interest) => {
-                            return (<View style={styles.containerIcon}>
-                                <Image source={interest.icon} style={styles.icon}/>
-                                <Text style={styles.iconText}>{interest.name}</Text>
+        <div>
+            {props.person != 0 &&
+            
+            <GestureRecognizer
+            onSwipe={(direction, state) => onSwipe(direction, state)}
+            onSwipeLeft={(state) => onSwipeLeft(state)}
+            config={config}
+            style={{
+            flex: 1,
+            }}
+            >
+                <ScrollView style={styles.screenLayout}>
+                    <View style={styles.rowContainer}>
+                        <ImageBackground source={props.person.images[imageIndex]} style={styles.image}>
+                            <View style={{...styles.rowContainer, marginHorizontal: 5, marginVertical: 5, justifyContent:"space-between", marginTop:"auto"}}>
+                                <FontAwesome name="chevron-circle-left" size={25} color="#FFFFFF" onPress={() => showPreviousImage(imageIndex)}/>
+                                <FontAwesome name="chevron-circle-right" size={25} color="#FFFFFF" onPress={() => showNextImage(imageIndex)}/>
                             </View>
-                        )})
-                    }
-                </View>
-                <View style={{...styles.rowContainer, borderColor: "#DEDEDE", borderBottomWidth: 1}}/>
-                <Text style={styles.sectionTitle}>
-                    Biography
-                </Text>
-                <Text>
-                    {person.biography}
-                </Text>
-                <View style={{...styles.rowContainer, justifyContent:"space-between", marginHorizontal: 20, marginVertical: 20}}>
-                    <TouchableOpacity
-                        onPress={() => onButtonClick()}
-                        style={styles.rejectButton}
-                    >
-                        <FontAwesome name="close" color="#FFFFFF" size={35} />
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => onButtonClick()}
-                        style={styles.approveButton}
-                    >
-                        <FontAwesome name="check" color="#FFFFFF" size={35}/>
-                    </TouchableOpacity>
-                </View>
-            </ScrollView>
-        </GestureRecognizer>)
+                        </ImageBackground>
+                        <View>
+                            <Text style={styles.name}>{props.person.name}</Text>
+                            <Text style={styles.age}>{props.person.age}</Text>
+                            <Text style={styles.distance}>{props.person.distance}km away</Text>
+                        </View>
+                    </View>
+                    <Text style={styles.sectionTitle}>
+                        Interests
+                    </Text>
+                    <View style={styles.rowContainer}>
+                        {
+                            props.person.interest.map((interest) => {
+                                return (<View style={styles.containerIcon}>
+                                    {log()}
+                                    <Image source={interests[interest]} style={styles.icon}/>
+                                    <Text style={styles.iconText}>{interest}</Text>
+                                </View>
+                            )})
+                        }
+                    </View>
+                    <View style={{...styles.rowContainer, borderColor: "#DEDEDE", borderBottomWidth: 1}}/>
+                    <Text style={styles.sectionTitle}>
+                        Biography
+                    </Text>
+                    <Text>
+                        {props.person.biography}
+                    </Text>
+                    <View style={{...styles.rowContainer, borderColor: "#DEDEDE", borderBottomWidth: 1}}/>
+                    <Text style={styles.sectionTitle}>
+                        Achievements
+                    </Text>
+                    <Text>
+                        {props.person.achievements}
+                    </Text>
+                    <View style={{...styles.rowContainer, justifyContent:"space-between", marginHorizontal: 20, marginVertical: 20}}>
+                        <TouchableOpacity
+                            onPress={() => onButtonClick()}
+                            style={styles.rejectButton}
+                        >
+                            <FontAwesome name="close" color="#FFFFFF" size={35} />
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => onButtonClick()}
+                            style={styles.approveButton}
+                        >
+                            <FontAwesome name="check" color="#FFFFFF" size={35}/>
+                        </TouchableOpacity>
+                    </View>
+                </ScrollView>
+            </GestureRecognizer>
+            }  
+        </div>
+        )
 }  
