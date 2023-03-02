@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import SettingsScreenView from './SettingsScreenView';
-import { debounce } from 'lodash';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const STORAGE_KEY = 'SETTINGS';
 
 
 const SettingsScreenPresenter = () => {
@@ -18,6 +20,31 @@ const SettingsScreenPresenter = () => {
     { name: 'Kayak', selected: false},
     { name: 'Bike', selected: false}
   ]);
+
+  useEffect(() => {
+    // Retrieve stored settings when the component mounts
+    AsyncStorage.getItem(STORAGE_KEY).then((settings) => {
+      if (settings) {
+        const parsedSettings = JSON.parse(settings);
+        setDistance(parsedSettings.distance || 0);
+        setAge(parsedSettings.age || 0);
+        setGender(parsedSettings.gender || 'all');
+        setSelectedSportsOption(parsedSettings.selectedSportsOption || '');
+        setCustomSports(parsedSettings.customSports || []);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    // Store settings whenever they change
+    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({
+      distance,
+      age,
+      gender,
+      selectedSportsOption,
+      customSports
+    }));
+  }, [distance, age, gender, selectedSportsOption, customSports]);
 
   function handleCustomSportsInputChange(value) {
     setCustomSportsInput(value);

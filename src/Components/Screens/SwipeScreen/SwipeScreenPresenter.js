@@ -39,13 +39,11 @@ export default function SwipeScreenPresenter({ navigation }) {
   }, []);
 
   function getNextPerson(){
-    if (personIndex < 2) {
-      const newIndex = personIndex +1 
+      const newIndex = (personIndex +1) % users.length; 
       setPersonIndex(newIndex);
       setPerson(users[newIndex]);
       console.log("USERS: ",users);
       console.log("PERSONINDEX: ",newIndex);
-    }
   }
 
 

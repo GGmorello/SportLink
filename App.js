@@ -2,77 +2,28 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import SwipeScreenPresenter from './src/Components/Screens/SwipeScreen/SwipeScreenPresenter';
-import ProfileScreenPresenter from './src/Components/Screens/ProfileScreen/ProfileScreenPresenter';
-import MessageScreenPresenter from './src/Components/Screens/MessageScreen/MessageScreenPresenter';
-import ShowImageScreenPresenter from './src/Components/Screens/ShowImageScreen/ShowImageScreenPresenter';
-import EditScreenPresenter from './src/Components/Screens/ProfileScreen/EditScreenPresenter';
-import ChatScreenPresenter from './src/Components/Screens/ChatScreen/ChatScreenPresenter';
-import SettingsScreenPresenter from './src/Components/Screens/SettingsScreen/SettingsScreenPresenter';
+import { auth } from './src/Utilities/firebase.config';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import SettingsScreenView from './src/Components/Screens/SettingsScreen/SettingsScreenView';
+import React from 'react';
+import UserStack from './src/Components/userStack';
+import AuthStack from './src/Components/authStack';
+import { onAuthStateChanged } from "firebase/auth";
 
-const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ animation: 'none'}}>
-        <Stack.Screen
-          name="SwipeScreen"
-          component={SwipeScreenPresenter}
-          options={({ navigation }) => ({
-            headerRight: (props) => <Settings {...props} navigation={navigation}/>,
-            title: 'SportLink' ,
+  const [user, setUser] = React.useState({});
+  
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
 
-          })}
-        />
-        <Stack.Screen
-          name="ProfileScreen"
-          options={{ title: 'Profile' }}
-          component={ProfileScreenPresenter}
-        />
-        <Stack.Screen
-          name="ChatScreen"
-          options={{ title: 'Chat' }}
-          component={ChatScreenPresenter}
-        />
-        <Stack.Screen
-          name="MessageScreen"
-          options={{ title: 'Matches' }}
-          component={MessageScreenPresenter}
-        />
-        <Stack.Screen
-          name="ShowImage"
-          options={{ title: '' }}
-          component={ShowImageScreenPresenter}
-        />
-        <Stack.Screen
-          name="EditProfileScreen"
-          options={{ title: 'Edit Profile' }}
-          component={EditScreenPresenter}
-        />
-        <Stack.Screen
-          name="SettingsScreen"
-          options={{ title: 'Settings' }}
-          component={SettingsScreenPresenter}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+  return user ? <UserStack /> : <AuthStack />;
+
+
+  
 }
 
-function Settings({navigation}) {
-  return (
-    <FontAwesome 
-      name='cog'
-      size={30}
-      style={{marginRight:20}}
-      onPress={() => navigation.navigate('SettingsScreen')}
-    />
-  )
-}
+
 
 const styles = StyleSheet.create({
   container: {
